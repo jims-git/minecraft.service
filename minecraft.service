@@ -1,0 +1,26 @@
+[Unit]
+Description=Minecraft Server
+After=network.target
+
+[Service]
+WorkingDirectory=/home/jim/minecraft
+
+User=jim
+Group=jim
+
+Restart=always
+
+ExecStart=/usr/bin/screen -DmS Server1 bash /home/jim/minecraft/scripts/run.sh
+
+
+ExecStop=/usr/bin/screen -p 0 -S Server1 -X eval 'stuff "say SERVER SHUTTING DOWN IN 15 SECONDS..."\015'
+ExecStop=/bin/sleep 5
+ExecStop=/usr/bin/screen -p 0 -S Server1 -X eval 'stuff "say SERVER SHUTTING DOWN IN 10 SECONDS..."\015'
+ExecStop=/bin/sleep 5
+ExecStop=/usr/bin/screen -p 0 -S Server1 -X eval 'stuff "say SERVER SHUTTING DOWN IN 5 SECONDS..."\015'
+ExecStop=/bin/sleep 5
+ExecStop=/usr/bin/screen -p 0 -S Server1 -X eval 'stuff "save-all"\015'
+ExecStop=/usr/bin/screen -p 0 -S Server1 -X eval 'stuff "stop"\015'
+
+[Install]
+WantedBy=multi-user.target
