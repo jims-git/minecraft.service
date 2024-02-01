@@ -1,6 +1,6 @@
 # minecraft.service
 This will launch minecraft as a service at startup.
-
+```
  Folder Structure
  ================
  minecraft/
@@ -24,13 +24,14 @@ This will launch minecraft as a service at startup.
  ├── versions
  ├── whitelist.json
  └── world
-
+```
+```
 cd ~/minecraft/scripts
 Save this file to ~/minecraft/scripts/ and then : 
 sudo systemctl daemon-reload
 sudo systemctl enable minecraft
-
-
+```
+```
 systemctrl commands
 ---------------------------
 sudo systemctl daemon-reload                # This command tells Linux there is a new/modified Service available.
@@ -42,8 +43,8 @@ service minecraft status
 journalctl -fu minecraft.service
 
 sudo service minecraft stop                 # gracefully shutdown the server
-
-
+```
+```
 You can connect to the screen minecraft is running in to give in-game commands:
 jim@ms:~/minecraft$ screen -ls
 There is a screen on:
@@ -60,3 +61,4 @@ cd /etc/systemd/system/
 ls
 You should see minecraft.service in the list.
 If you modify the file here, you will need to: sudo systemctl daemon-reload
+```
